@@ -1,6 +1,6 @@
 ---
 # try also 'default' to start simple
-theme: seriph
+theme: geist
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://source.unsplash.com/collection/94734566/1920x1080
@@ -50,12 +50,12 @@ class: 'text-white'
 # renderizado
 ## componentes
 
-existen 2 formas para renderizar componentes en una aplicacion desarrollada con next:
+Existen dos formas para renderizar componentes en una aplicación desarrollada con Next.js:
 
 - del lado del cliente, ***client side***
 - del lado del servidor, ***server side***
 
-por defecto next trata todos los componentes como ```server side```
+Por defecto, Next.js trata todos los componentes como ```server side```
 
 <v-click>
 
@@ -98,7 +98,7 @@ segun la docu de next, es facil deducir los componentes de cliente por el hecho 
 
 primero creamos nuestro componente
 
-```tsx 
+```tsx
 export default function Counter() {
  
   return (
@@ -118,7 +118,7 @@ pero este componente counter no cuenta necesita funcionalidad, un comportamiento
 
 le damos un comportamiento
 
-```tsx
+```tsx {1,3,7,8}
 import { useState } from 'react'
 export default function Counter() {
     const [count, setCount] = useState(0)
@@ -138,7 +138,7 @@ export default function Counter() {
 
 le indicamos a next que es un componente de client
 
-```tsx
+```tsx {1}
 'use client'
 import { useState } from 'react'
 export default function Counter() {
@@ -155,16 +155,16 @@ export default function Counter() {
 ---
 ---
 # renderizado
-### Client side
+## Client side
 
-tips:
+## tips:
 
 <v-clicks>
 
-- estudia el comportamiento del componente
-- si necesitas usar un Hook, es un claro indicativo
-- puedes extraer comportamientos en CustomsHooks
-- esto te puede ayudar a ir reduciendo los componentes de cliente
+####  estudia el comportamiento del componente
+####  si necesitas usar un Hook, es un claro indicativo
+####  puedes extraer comportamientos en CustomsHooks
+####  esto te puede ayudar a ir reduciendo los componentes de cliente
 
 </v-clicks>
 
@@ -173,24 +173,23 @@ tips:
 ---
 # renderizado
 
-### Server side
+## Server side
 
-como sabemos cuando un componente es de servidor ?
-
-1. es informacion que no va a cambiar, indenpendientemente de lo que haga el cliente
+### como sabemos cuando un componente es de servidor ?
 
 <v-click>
 
-- FAQ
-- los header, footers...
+#### es informacion que no va a cambiar
+
+ `FAQ header, footers...`
 
 </v-click>
 
-2. es informacion que consulta el cliente, traernos informacion de la bbdd para mostrarla
-
 <v-click>
 
-  - muchas veces esa llamada siempre es la misma, podemos crear ese componente en el servidor y enviarlo al cliente
+#### una consulta a una tabla de 🛢️
+
+`la llamada siempre es la misma + los datos cambian poco`
 
 </v-click>
 
@@ -201,18 +200,23 @@ como sabemos cuando un componente es de servidor ?
 
 #### tecnicas
 
-- SSR : Server Side Rendering, La página es generada en cada petición.
+<v-click>
 
-- SSG : Static Site Generation, la página se genera en build time. Admite hacerlo con o sin parametros, los datos de estas paginas no cambian muy a menudo.
+- `SSR` : Server Side Rendering, La página es generada en cada petición.
 
-- ISR: Incremental Static Regeneration, es similar a la anterior pero esta tiene una estrategia de revalidación en el tiempo.
+- `SSG` : Static Site Generation, la página se genera en build time. Admite hacerlo con o sin parametros, los datos de estas paginas no cambian muy a menudo.
 
+- `ISR`: Incremental Static Regeneration, es similar a la anterior pero esta tiene una estrategia de revalidación en el tiempo.
+
+</v-click>
 ---
 ---
 # renderizado
 ### Server side -- using app routes
 
-la forma en la que definimos como se comportara nuestra página depende de como definamos la ruta, estática o dinámica
+La forma en la que definimos como se comportara nuestra página depende de como definamos la ruta, 
+
+`estática` o `dinámica`
 
 <v-click>
 
@@ -235,6 +239,8 @@ los componentes son renderizados en cada petición.
 ---
 # renderizado
 ### Server side -- using app routes
+
+revisar la parte del fetching de datos
 
 pintar una pagina suele necesitar unos datos que usualmente tenemos que solicitar a un tercero, recopilar estos datos se conoce como ***fetch***
 
